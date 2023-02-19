@@ -22,7 +22,20 @@ resource "aws_instance" "master" {
   subnet_id = aws_subnet.private_subnet[0].id
   vpc_security_group_ids = [aws_security_group.infra.id]
   tags = {
-    "Name"= "${var.environment}-${var.name}-master"
+    "Name"= "${var.environment}-${var.name}-master-${count.index + 1}"
+    "Environment"= "${var.environment}"
+  }
+}
+resource "aws_instance" "worker" {
+  count = var.worker_count
+  ami           = "ami-055d15d9cfddf7bd3"
+  instance_type = var.worker_size
+  key_name = var.ssh_key_pair
+  associate_public_ip_address = false
+  subnet_id = aws_subnet.private_subnet[0].id
+  vpc_security_group_ids = [aws_security_group.infra.id]
+  tags = {
+    "Name"= "${var.environment}-${var.name}-worker-${count.index + 1}"
     "Environment"= "${var.environment}"
   }
 }

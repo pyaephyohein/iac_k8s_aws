@@ -55,7 +55,7 @@ variable "write_capacity" {
 }
 
 variable "force_destroy" {
-  description = "A boolean that indicates the S3 bucket can be destroyed even if it contains objects. These objects are not recoverable"
+  description = "force destroy s3 bucket"
   type        = bool
   default     = false
 }
