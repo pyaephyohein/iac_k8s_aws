@@ -1,6 +1,6 @@
 ansible==12.2.0
 ansible-core==2.12.5
-cryptography==3.4.8
+cryptography==50.0.0
 jinja2==2.11.3
 jmespath==0.9.5
 MarkupSafe==1.1.1
